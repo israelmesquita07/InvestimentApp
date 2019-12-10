@@ -151,6 +151,9 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="simulateInvestiment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0N3-hi-E7B"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -165,6 +168,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="dateTextField" destination="Dc0-i9-2Ro" id="dVx-6g-3o8"/>
+                        <outlet property="moneyTextField" destination="1cn-Qt-yBH" id="mH7-ZT-ZMf"/>
+                        <outlet property="percentTextField" destination="lJ8-Pr-BDk" id="N3n-Ps-JgB"/>
+                        <outlet property="simulateButton" destination="x35-W4-IG1" id="XkJ-D5-4Oy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -228,6 +237,9 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backToSimulateAgain:" destination="xa8-Vm-U2p" eventType="touchUpInside" id="6Xc-gd-fdI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -248,6 +260,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JkF-JJ-RLW"/>
                     </view>
+                    <connections>
+                        <outlet property="simulateAgainButton" destination="lEs-yX-k66" id="8jB-ie-kPM"/>
+                        <outlet property="tableView" destination="Y7R-dZ-90H" id="7Dz-HB-cJf"/>
+                        <outlet property="totalMoneyLabel" destination="Ggd-Ef-2UP" id="M3x-DF-sZF"/>
+                        <outlet property="yieldMoneyLabel" destination="bhK-fT-tyq" id="dY9-yD-l3S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRn-tS-P3A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

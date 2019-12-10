@@ -10,21 +10,19 @@ import UIKit
 
 class InvestimentDetailsViewController: UIViewController {
 
+    
+    @IBOutlet weak var totalMoneyLabel: UILabel!
+    @IBOutlet weak var yieldMoneyLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var simulateAgainButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
+    @IBAction func backToSimulateAgain(_ sender: UIButton) {
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
 }
