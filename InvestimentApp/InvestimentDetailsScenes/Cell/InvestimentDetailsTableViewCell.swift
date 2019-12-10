@@ -17,9 +17,9 @@ class InvestimentDetailsTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func setupCell(){
-//        contextualLabel.text = ""
-//        valueLabel.text = ""
+    func setupCell(contextual:String, value:String){
+        contextualLabel.text = contextual
+        valueLabel.text = value
     }
     
 }

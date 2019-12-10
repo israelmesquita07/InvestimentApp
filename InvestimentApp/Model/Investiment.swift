@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Investiment {
+struct Investiment: Decodable {
     let investmentParameter: InvestmentParameter?
     let grossAmount: Double?
     let taxesAmount: Double?
@@ -23,7 +23,7 @@ struct Investiment {
     let annualNetRateProfit: Double?
 }
 
-struct InvestmentParameter: Codable {
+struct InvestmentParameter: Decodable {
     let investedAmount: Double?
     let yearlyInterestRate: Double?
     let maturityTotalDays: Int?

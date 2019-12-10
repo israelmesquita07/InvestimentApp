@@ -47,7 +47,7 @@ extension InvestimentDetailsViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! InvestimentDetailsTableViewCell
         
-        cell.setupCell()
+        cell.setupCell(contextual: "Algo", value: "Detalhe")
         
         return cell
     }

@@ -225,7 +225,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEs-yX-k66">
                                 <rect key="frame" x="14" y="595" width="347" height="50"/>
-                                <color key="backgroundColor" red="0.35232335329999998" green="0.77322477099999998" blue="0.70195859670000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.3529411764705882" green="0.77322477099999998" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8cR-C5-7Je"/>
                                 </constraints>
