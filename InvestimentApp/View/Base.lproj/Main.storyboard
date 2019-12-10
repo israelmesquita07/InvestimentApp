@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="IOl-x8-hEI">
-                                <rect key="frame" x="14" y="172" width="347" height="323"/>
+                                <rect key="frame" x="14" y="50" width="347" height="323"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="B1n-KR-Wwr">
                                         <rect key="frame" x="0.0" y="0.0" width="347" height="81"/>
@@ -138,7 +138,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x35-W4-IG1">
-                                <rect key="frame" x="14" y="595" width="347" height="50"/>
+                                <rect key="frame" x="14" y="413" width="347" height="50"/>
                                 <color key="backgroundColor" name="clr-easynvest-gray"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="yLw-Ur-Mfc"/>
@@ -160,11 +160,10 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IOl-x8-hEI" secondAttribute="trailing" constant="14" id="1g0-hX-9Fp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x35-W4-IG1" secondAttribute="trailing" constant="14" id="4g7-vo-cVy"/>
-                            <constraint firstItem="IOl-x8-hEI" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="N1q-yV-rCQ"/>
                             <constraint firstItem="x35-W4-IG1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="OUD-nX-J5L"/>
-                            <constraint firstItem="x35-W4-IG1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IOl-x8-hEI" secondAttribute="bottom" constant="12" id="OVf-3v-9zM"/>
+                            <constraint firstItem="x35-W4-IG1" firstAttribute="top" secondItem="IOl-x8-hEI" secondAttribute="bottom" constant="40" id="OVf-3v-9zM"/>
                             <constraint firstItem="IOl-x8-hEI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="j01-Su-YfH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x35-W4-IG1" secondAttribute="bottom" constant="22" id="mmA-pk-sOc"/>
+                            <constraint firstItem="IOl-x8-hEI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="mzt-Dp-lTG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
