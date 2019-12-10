@@ -17,6 +17,12 @@
 		58E09FBE239F46B700581755 /* InvestimentFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FBC239F46B600581755 /* InvestimentFormViewController.swift */; };
 		58E09FC0239F46E800581755 /* InvestimentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FBF239F46E800581755 /* InvestimentDetailsViewController.swift */; };
 		58E09FC1239F46E800581755 /* InvestimentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FBF239F46E800581755 /* InvestimentDetailsViewController.swift */; };
+		58E09FC8239F4AA800581755 /* InvestimentDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FC6239F4AA800581755 /* InvestimentDetailsTableViewCell.swift */; };
+		58E09FC9239F4AA800581755 /* InvestimentDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FC6239F4AA800581755 /* InvestimentDetailsTableViewCell.swift */; };
+		58E09FCA239F4AA800581755 /* InvestimentDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E09FC7239F4AA800581755 /* InvestimentDetailsTableViewCell.xib */; };
+		58E09FCB239F4AA800581755 /* InvestimentDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E09FC7239F4AA800581755 /* InvestimentDetailsTableViewCell.xib */; };
+		58E09FCE239F4E4700581755 /* Investiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FCD239F4E4700581755 /* Investiment.swift */; };
+		58E09FCF239F4E4700581755 /* Investiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FCD239F4E4700581755 /* Investiment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +48,9 @@
 		584860ED239C3BB20051F12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58E09FBC239F46B600581755 /* InvestimentFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormViewController.swift; sourceTree = "<group>"; };
 		58E09FBF239F46E800581755 /* InvestimentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentDetailsViewController.swift; sourceTree = "<group>"; };
+		58E09FC6239F4AA800581755 /* InvestimentDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		58E09FC7239F4AA800581755 /* InvestimentDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestimentDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		58E09FCD239F4E4700581755 /* Investiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Investiment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				58E09FC4239F478800581755 /* App Start */,
+				58E09FD0239F4F8600581755 /* Model */,
 				58E09FC5239F479500581755 /* View */,
 				58E09FC2239F472600581755 /* InvestimentFormScenes */,
 				58E09FC3239F473300581755 /* InvestimentDetailsScenes */,
@@ -113,6 +123,7 @@
 		58E09FC3239F473300581755 /* InvestimentDetailsScenes */ = {
 			isa = PBXGroup;
 			children = (
+				58E09FCC239F4AC000581755 /* Cell */,
 				58E09FBF239F46E800581755 /* InvestimentDetailsViewController.swift */,
 			);
 			path = InvestimentDetailsScenes;
@@ -134,6 +145,23 @@
 				584860DF239C3BB20051F12E /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		58E09FCC239F4AC000581755 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				58E09FC7239F4AA800581755 /* InvestimentDetailsTableViewCell.xib */,
+				58E09FC6239F4AA800581755 /* InvestimentDetailsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		58E09FD0239F4F8600581755 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58E09FCD239F4E4700581755 /* Investiment.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +248,7 @@
 				584860E1239C3BB20051F12E /* LaunchScreen.storyboard in Resources */,
 				584860DE239C3BB20051F12E /* Assets.xcassets in Resources */,
 				584860DC239C3BAF0051F12E /* Main.storyboard in Resources */,
+				58E09FCA239F4AA800581755 /* InvestimentDetailsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58E09FCB239F4AA800581755 /* InvestimentDetailsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,9 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58E09FC8239F4AA800581755 /* InvestimentDetailsTableViewCell.swift in Sources */,
 				584860D5239C3BAF0051F12E /* AppDelegate.swift in Sources */,
 				58E09FC0239F46E800581755 /* InvestimentDetailsViewController.swift in Sources */,
 				58E09FBD239F46B600581755 /* InvestimentFormViewController.swift in Sources */,
+				58E09FCE239F4E4700581755 /* Investiment.swift in Sources */,
 				584860D7239C3BAF0051F12E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,7 +282,9 @@
 			files = (
 				58E09FC1239F46E800581755 /* InvestimentDetailsViewController.swift in Sources */,
 				58E09FBE239F46B700581755 /* InvestimentFormViewController.swift in Sources */,
+				58E09FCF239F4E4700581755 /* Investiment.swift in Sources */,
 				584860EC239C3BB20051F12E /* InvestimentAppTests.swift in Sources */,
+				58E09FC9239F4AA800581755 /* InvestimentDetailsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
