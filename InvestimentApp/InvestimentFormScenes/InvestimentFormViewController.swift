@@ -8,12 +8,21 @@
 
 import UIKit
 
-class InvestimentFormViewController: UIViewController {
+protocol InvestimentFormViewControllerProtocol: AnyObject {
+    func getInvestiments()
+    func showError()
+    func toggleLoading(_ bool:Bool)
+}
 
+class InvestimentFormViewController: UIViewController, InvestimentFormViewControllerProtocol {
+    
     @IBOutlet weak var moneyTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var percentTextField: UITextField!
     @IBOutlet weak var simulateButton: UIButton!
+    
+    private var presenter = InvestimentFormPresenter()
+    private var interactor = InvestimentFormInteractor()
     
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker(frame: CGRect(origin: .zero, size: CGSize(width: view.frame.width, height: view.frame.height/3.3)))
@@ -44,6 +53,37 @@ class InvestimentFormViewController: UIViewController {
         dateTextField.delegate = self
         moneyTextField.delegate = self
         percentTextField.delegate = self
+        presenter.investimentFormViewControllerDelegate = self
+        interactor.investimentFormPresenterDelegate = presenter
+    }
+    
+    func getInvestiments() {
+        interactor.getInvestiments(params: getParams())
+    }
+    
+    func showError() {
+        showAlert(title: "Ops!", message: "Ocorreu um erro!")
+    }
+    
+    func toggleLoading(_ bool: Bool) {
+        
+    }
+    
+    func getParams() -> [String:Any] {
+        
+        guard let money = Double(moneyTextField.text!), let date = dateTextField.text, let percent = Int(percentTextField.text!) else{
+            showError()
+            return [String:Any]()
+        }
+        let request = Request(investedAmount: money, rate: percent, maturityDate: date)
+        return request.params
+    }
+    
+    private func showAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
@@ -68,9 +108,8 @@ class InvestimentFormViewController: UIViewController {
     }
     
     @IBAction func simulateInvestiment(_ sender: UIButton) {
-        //chamar interactor
+        getInvestiments()
     }
-    
 }
 
 //MARK: - UITextFieldDelegate

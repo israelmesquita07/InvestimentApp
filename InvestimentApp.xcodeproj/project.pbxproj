@@ -13,6 +13,16 @@
 		584860DE239C3BB20051F12E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 584860DD239C3BB20051F12E /* Assets.xcassets */; };
 		584860E1239C3BB20051F12E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584860DF239C3BB20051F12E /* LaunchScreen.storyboard */; };
 		584860EC239C3BB20051F12E /* InvestimentAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584860EB239C3BB20051F12E /* InvestimentAppTests.swift */; };
+		58ADB9D423A018D600E444D4 /* InvestimentFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9D323A018D600E444D4 /* InvestimentFormPresenter.swift */; };
+		58ADB9D523A018D600E444D4 /* InvestimentFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9D323A018D600E444D4 /* InvestimentFormPresenter.swift */; };
+		58ADB9D723A018E300E444D4 /* InvestimentFormInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9D623A018E300E444D4 /* InvestimentFormInteractor.swift */; };
+		58ADB9D823A018E300E444D4 /* InvestimentFormInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9D623A018E300E444D4 /* InvestimentFormInteractor.swift */; };
+		58ADB9DA23A018EF00E444D4 /* InvestimentFormWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9D923A018EF00E444D4 /* InvestimentFormWorker.swift */; };
+		58ADB9DB23A018EF00E444D4 /* InvestimentFormWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9D923A018EF00E444D4 /* InvestimentFormWorker.swift */; };
+		58ADB9DD23A03A4300E444D4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9DC23A03A4300E444D4 /* Utils.swift */; };
+		58ADB9DE23A03A4300E444D4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9DC23A03A4300E444D4 /* Utils.swift */; };
+		58ADB9E023A1958F00E444D4 /* InvestimentDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9DF23A1958F00E444D4 /* InvestimentDetailsPresenter.swift */; };
+		58ADB9E123A1958F00E444D4 /* InvestimentDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9DF23A1958F00E444D4 /* InvestimentDetailsPresenter.swift */; };
 		58E09FBD239F46B600581755 /* InvestimentFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FBC239F46B600581755 /* InvestimentFormViewController.swift */; };
 		58E09FBE239F46B700581755 /* InvestimentFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FBC239F46B600581755 /* InvestimentFormViewController.swift */; };
 		58E09FC0239F46E800581755 /* InvestimentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E09FBF239F46E800581755 /* InvestimentDetailsViewController.swift */; };
@@ -52,6 +62,11 @@
 		584860E7239C3BB20051F12E /* InvestimentAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InvestimentAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		584860EB239C3BB20051F12E /* InvestimentAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentAppTests.swift; sourceTree = "<group>"; };
 		584860ED239C3BB20051F12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58ADB9D323A018D600E444D4 /* InvestimentFormPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormPresenter.swift; sourceTree = "<group>"; };
+		58ADB9D623A018E300E444D4 /* InvestimentFormInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormInteractor.swift; sourceTree = "<group>"; };
+		58ADB9D923A018EF00E444D4 /* InvestimentFormWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormWorker.swift; sourceTree = "<group>"; };
+		58ADB9DC23A03A4300E444D4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		58ADB9DF23A1958F00E444D4 /* InvestimentDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentDetailsPresenter.swift; sourceTree = "<group>"; };
 		58E09FBC239F46B600581755 /* InvestimentFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormViewController.swift; sourceTree = "<group>"; };
 		58E09FBF239F46E800581755 /* InvestimentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentDetailsViewController.swift; sourceTree = "<group>"; };
 		58E09FC6239F4AA800581755 /* InvestimentDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -109,6 +124,7 @@
 				58E09FDA239F57EC00581755 /* Service */,
 				584860DD239C3BB20051F12E /* Assets.xcassets */,
 				584860E2239C3BB20051F12E /* Info.plist */,
+				58ADB9DC23A03A4300E444D4 /* Utils.swift */,
 			);
 			path = InvestimentApp;
 			sourceTree = "<group>";
@@ -126,6 +142,9 @@
 			isa = PBXGroup;
 			children = (
 				58E09FBC239F46B600581755 /* InvestimentFormViewController.swift */,
+				58ADB9D323A018D600E444D4 /* InvestimentFormPresenter.swift */,
+				58ADB9D623A018E300E444D4 /* InvestimentFormInteractor.swift */,
+				58ADB9D923A018EF00E444D4 /* InvestimentFormWorker.swift */,
 			);
 			path = InvestimentFormScenes;
 			sourceTree = "<group>";
@@ -135,6 +154,7 @@
 			children = (
 				58E09FCC239F4AC000581755 /* Cell */,
 				58E09FBF239F46E800581755 /* InvestimentDetailsViewController.swift */,
+				58ADB9DF23A1958F00E444D4 /* InvestimentDetailsPresenter.swift */,
 			);
 			path = InvestimentDetailsScenes;
 			sourceTree = "<group>";
@@ -289,13 +309,18 @@
 			files = (
 				58E09FD2239F52D300581755 /* Endpoint.swift in Sources */,
 				58E09FC8239F4AA800581755 /* InvestimentDetailsTableViewCell.swift in Sources */,
+				58ADB9E023A1958F00E444D4 /* InvestimentDetailsPresenter.swift in Sources */,
 				584860D5239C3BAF0051F12E /* AppDelegate.swift in Sources */,
+				58ADB9D423A018D600E444D4 /* InvestimentFormPresenter.swift in Sources */,
 				58E09FC0239F46E800581755 /* InvestimentDetailsViewController.swift in Sources */,
+				58ADB9DD23A03A4300E444D4 /* Utils.swift in Sources */,
 				58E09FBD239F46B600581755 /* InvestimentFormViewController.swift in Sources */,
 				58E09FCE239F4E4700581755 /* Investiment.swift in Sources */,
 				58E09FD5239F533F00581755 /* API.swift in Sources */,
 				58E09FD8239F546600581755 /* Request.swift in Sources */,
 				584860D7239C3BAF0051F12E /* SceneDelegate.swift in Sources */,
+				58ADB9DA23A018EF00E444D4 /* InvestimentFormWorker.swift in Sources */,
+				58ADB9D723A018E300E444D4 /* InvestimentFormInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +329,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E09FC1239F46E800581755 /* InvestimentDetailsViewController.swift in Sources */,
+				58ADB9E123A1958F00E444D4 /* InvestimentDetailsPresenter.swift in Sources */,
+				58ADB9DB23A018EF00E444D4 /* InvestimentFormWorker.swift in Sources */,
+				58ADB9D823A018E300E444D4 /* InvestimentFormInteractor.swift in Sources */,
+				58ADB9D523A018D600E444D4 /* InvestimentFormPresenter.swift in Sources */,
 				58E09FD9239F546600581755 /* Request.swift in Sources */,
 				58E09FBE239F46B700581755 /* InvestimentFormViewController.swift in Sources */,
 				58E09FCF239F4E4700581755 /* Investiment.swift in Sources */,
@@ -311,6 +340,7 @@
 				58E09FD3239F52D300581755 /* Endpoint.swift in Sources */,
 				58E09FC9239F4AA800581755 /* InvestimentDetailsTableViewCell.swift in Sources */,
 				58E09FD6239F533F00581755 /* API.swift in Sources */,
+				58ADB9DE23A03A4300E444D4 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,9 +10,9 @@ import Foundation
 
 struct Request {
     var investedAmount: Double
-    var index: String
+    var index: String = "CDI"
     var rate: Int
-    var isTaxFree: Bool
+    var isTaxFree: Bool = false
     var maturityDate: String
     var params: [String: Any] {
         return [
