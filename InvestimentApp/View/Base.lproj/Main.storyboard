@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VH2-x0-bhy">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,13 +12,13 @@
         <!--Investiment Form View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="InvestimentFormViewController" customModule="InvestimentApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InvestimentFormViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="InvestimentFormViewController" customModule="InvestimentApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="IOl-x8-hEI">
-                                <rect key="frame" x="14" y="50" width="347" height="323"/>
+                                <rect key="frame" x="14" y="94" width="347" height="323"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="B1n-KR-Wwr">
                                         <rect key="frame" x="0.0" y="0.0" width="347" height="81"/>
@@ -138,7 +139,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x35-W4-IG1">
-                                <rect key="frame" x="14" y="413" width="347" height="50"/>
+                                <rect key="frame" x="14" y="457" width="347" height="50"/>
                                 <color key="backgroundColor" name="clr-easynvest-gray"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="yLw-Ur-Mfc"/>
@@ -167,6 +168,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7he-Dy-2Oo"/>
                     <connections>
                         <outlet property="dateTextField" destination="Dc0-i9-2Ro" id="dVx-6g-3o8"/>
                         <outlet property="moneyTextField" destination="1cn-Qt-yBH" id="mH7-ZT-ZMf"/>
@@ -176,12 +178,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="130"/>
+            <point key="canvasLocation" x="1077.5999999999999" y="129.98500749625188"/>
         </scene>
         <!--Investiment Details View Controller-->
         <scene sceneID="bLQ-RR-2UD">
             <objects>
-                <viewController id="xa8-Vm-U2p" customClass="InvestimentDetailsViewController" customModule="InvestimentApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InvestimentDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xa8-Vm-U2p" customClass="InvestimentDetailsViewController" customModule="InvestimentApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V0N-Fd-kI6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,14 +263,32 @@
                     </view>
                     <connections>
                         <outlet property="simulateAgainButton" destination="lEs-yX-k66" id="8jB-ie-kPM"/>
-                        <outlet property="tableView" destination="Y7R-dZ-90H" id="7Dz-HB-cJf"/>
+                        <outlet property="tableView" destination="Y7R-dZ-90H" id="lc1-kB-8oC"/>
                         <outlet property="totalMoneyLabel" destination="Ggd-Ef-2UP" id="M3x-DF-sZF"/>
                         <outlet property="yieldMoneyLabel" destination="bhK-fT-tyq" id="dY9-yD-l3S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRn-tS-P3A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="991.20000000000005" y="129.98500749625188"/>
+            <point key="canvasLocation" x="1930.4000000000001" y="129.98500749625188"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EDm-Aj-d7V">
+            <objects>
+                <navigationController storyboardIdentifier="navInvestimentFormViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VH2-x0-bhy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9iv-pU-Vdl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DZ5-WV-La0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NYK-rT-RKM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="129.98500749625188"/>
         </scene>
     </scenes>
     <resources>

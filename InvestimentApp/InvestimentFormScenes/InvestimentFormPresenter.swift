@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol InvestimentFormPresenterProtocol: AnyObject {
+protocol InvestimentFormPresentationLogic: AnyObject {
     func showError()
     func toggleLoading(_ bool:Bool)
 }
 
-class InvestimentFormPresenter: InvestimentFormPresenterProtocol {
+class InvestimentFormPresenter: InvestimentFormPresentationLogic {
     
-    weak var investimentFormViewControllerDelegate: InvestimentFormViewControllerProtocol?
+    weak var investimentFormViewControllerDelegate: InvestimentFormDisplayLogic?
     
     func showError() {
         self.investimentFormViewControllerDelegate?.showError()

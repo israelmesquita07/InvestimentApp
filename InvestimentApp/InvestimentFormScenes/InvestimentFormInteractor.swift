@@ -8,21 +8,21 @@
 
 import Foundation
 
-protocol InvestimentFormInteractorProtocol {
+protocol InvestimentFormBusinessLogic {
     func getInvestiments(params: [String : Any])
 }
 
-class InvestimentFormInteractor: InvestimentFormInteractorProtocol {
+class InvestimentFormInteractor: InvestimentFormBusinessLogic {
 
-    weak var investimentFormPresenterDelegate: InvestimentFormPresenterProtocol?
-    weak var investimentDetailPresenterDelegate: InvestimentDetailsPresenterProtocol?
+    weak var investimentFormPresenterDelegate: InvestimentFormPresentationLogic?
+    weak var investimentFormRouterDelegate: InvestimentFormRoutingLogic?
 
     func getInvestiments(params: [String : Any]) {
         investimentFormPresenterDelegate?.toggleLoading(true)
         let worker = InvestimentFormWorker()
         worker.getInvestiments(params: params, onComplete: { [weak self] (investiment) in
             guard let self = self else { return }
-//            self.investimentFormPresenterDelegate?.showInvestiments(investiment: investiment)
+            self.investimentFormRouterDelegate?.routeToInvestiments(investiment: investiment)
         }) { (error) in
             self.investimentFormPresenterDelegate?.showError()
         }

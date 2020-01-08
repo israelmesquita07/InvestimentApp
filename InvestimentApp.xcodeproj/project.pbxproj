@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58187BC323C436E8003B3FE5 /* InvestimentFormViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58187BC223C436E8003B3FE5 /* InvestimentFormViewRouter.swift */; };
+		58187BC423C436E8003B3FE5 /* InvestimentFormViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58187BC223C436E8003B3FE5 /* InvestimentFormViewRouter.swift */; };
 		584860D5239C3BAF0051F12E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584860D4239C3BAF0051F12E /* AppDelegate.swift */; };
 		584860D7239C3BAF0051F12E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584860D6239C3BAF0051F12E /* SceneDelegate.swift */; };
 		584860DC239C3BAF0051F12E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584860DA239C3BAF0051F12E /* Main.storyboard */; };
@@ -52,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58187BC223C436E8003B3FE5 /* InvestimentFormViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormViewRouter.swift; sourceTree = "<group>"; };
 		584860D1239C3BAF0051F12E /* InvestimentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestimentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		584860D4239C3BAF0051F12E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		584860D6239C3BAF0051F12E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +148,7 @@
 				58ADB9D323A018D600E444D4 /* InvestimentFormPresenter.swift */,
 				58ADB9D623A018E300E444D4 /* InvestimentFormInteractor.swift */,
 				58ADB9D923A018EF00E444D4 /* InvestimentFormWorker.swift */,
+				58187BC223C436E8003B3FE5 /* InvestimentFormViewRouter.swift */,
 			);
 			path = InvestimentFormScenes;
 			sourceTree = "<group>";
@@ -312,6 +316,7 @@
 				58ADB9E023A1958F00E444D4 /* InvestimentDetailsPresenter.swift in Sources */,
 				584860D5239C3BAF0051F12E /* AppDelegate.swift in Sources */,
 				58ADB9D423A018D600E444D4 /* InvestimentFormPresenter.swift in Sources */,
+				58187BC323C436E8003B3FE5 /* InvestimentFormViewRouter.swift in Sources */,
 				58E09FC0239F46E800581755 /* InvestimentDetailsViewController.swift in Sources */,
 				58ADB9DD23A03A4300E444D4 /* Utils.swift in Sources */,
 				58E09FBD239F46B600581755 /* InvestimentFormViewController.swift in Sources */,
@@ -332,6 +337,7 @@
 				58ADB9E123A1958F00E444D4 /* InvestimentDetailsPresenter.swift in Sources */,
 				58ADB9DB23A018EF00E444D4 /* InvestimentFormWorker.swift in Sources */,
 				58ADB9D823A018E300E444D4 /* InvestimentFormInteractor.swift in Sources */,
+				58187BC423C436E8003B3FE5 /* InvestimentFormViewRouter.swift in Sources */,
 				58ADB9D523A018D600E444D4 /* InvestimentFormPresenter.swift in Sources */,
 				58E09FD9239F546600581755 /* Request.swift in Sources */,
 				58E09FBE239F46B700581755 /* InvestimentFormViewController.swift in Sources */,

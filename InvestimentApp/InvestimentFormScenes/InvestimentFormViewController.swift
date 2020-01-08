@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol InvestimentFormViewControllerProtocol: AnyObject {
+protocol InvestimentFormDisplayLogic: AnyObject {
     func getInvestiments()
     func showError()
     func toggleLoading(_ bool:Bool)
 }
 
-class InvestimentFormViewController: UIViewController, InvestimentFormViewControllerProtocol {
+class InvestimentFormViewController: UIViewController {
     
     @IBOutlet weak var moneyTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
@@ -23,6 +23,7 @@ class InvestimentFormViewController: UIViewController, InvestimentFormViewContro
     
     private var presenter = InvestimentFormPresenter()
     private var interactor = InvestimentFormInteractor()
+    private var router = InvestimentFormViewRouter()
     
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker(frame: CGRect(origin: .zero, size: CGSize(width: view.frame.width, height: view.frame.height/3.3)))
@@ -43,6 +44,7 @@ class InvestimentFormViewController: UIViewController, InvestimentFormViewContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setup()
     }
     
@@ -54,19 +56,9 @@ class InvestimentFormViewController: UIViewController, InvestimentFormViewContro
         moneyTextField.delegate = self
         percentTextField.delegate = self
         presenter.investimentFormViewControllerDelegate = self
+        router.viewControllerDelegate = self
         interactor.investimentFormPresenterDelegate = presenter
-    }
-    
-    func getInvestiments() {
-        interactor.getInvestiments(params: getParams())
-    }
-    
-    func showError() {
-        showAlert(title: "Ops!", message: "Ocorreu um erro!")
-    }
-    
-    func toggleLoading(_ bool: Bool) {
-        
+        interactor.investimentFormRouterDelegate = router
     }
     
     func getParams() -> [String:Any] {
@@ -109,6 +101,26 @@ class InvestimentFormViewController: UIViewController, InvestimentFormViewContro
     
     @IBAction func simulateInvestiment(_ sender: UIButton) {
         getInvestiments()
+    }
+}
+
+
+//MARK: - InvestimentFormViewControllerProtocol
+extension InvestimentFormViewController: InvestimentFormDisplayLogic {
+    
+    func getInvestiments() {
+        interactor.getInvestiments(params: getParams())
+    }
+    
+    func showError() {
+        showAlert(title: "Ops!", message: "Ocorreu um erro!")
+    }
+    
+    func toggleLoading(_ bool: Bool) {
+        if bool {
+            //start loading
+        }
+        //stop loading
     }
 }
 
