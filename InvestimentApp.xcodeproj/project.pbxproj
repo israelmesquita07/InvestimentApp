@@ -125,9 +125,9 @@
 				58E09FC2239F472600581755 /* InvestimentFormScenes */,
 				58E09FC3239F473300581755 /* InvestimentDetailsScenes */,
 				58E09FDA239F57EC00581755 /* Service */,
+				5874BFF823C6D3C700805595 /* Utils */,
 				584860DD239C3BB20051F12E /* Assets.xcassets */,
 				584860E2239C3BB20051F12E /* Info.plist */,
-				58ADB9DC23A03A4300E444D4 /* Utils.swift */,
 			);
 			path = InvestimentApp;
 			sourceTree = "<group>";
@@ -139,6 +139,14 @@
 				584860ED239C3BB20051F12E /* Info.plist */,
 			);
 			path = InvestimentAppTests;
+			sourceTree = "<group>";
+		};
+		5874BFF823C6D3C700805595 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				58ADB9DC23A03A4300E444D4 /* Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		58E09FC2239F472600581755 /* InvestimentFormScenes */ = {

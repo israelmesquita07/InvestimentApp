@@ -71,13 +71,6 @@ class InvestimentFormViewController: UIViewController {
         return request.params
     }
     
-    private func showAlert(title:String, message:String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
-    
     @objc func dateChanged(datePicker: UIDatePicker) {
         dateFormatter(datePicker: datePicker)
     }
@@ -89,9 +82,7 @@ class InvestimentFormViewController: UIViewController {
     
     private func dateFormatter(datePicker: UIDatePicker) {
         //mandar pro presenter
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        let formattedDate = dateFormatter.string(from: datePicker.date)
+        let formattedDate = Utils.dateToString(from: datePicker.date)//dateFormatter.string(from: datePicker.date)
         dateTextField.text = formattedDate
     }
     
@@ -113,7 +104,7 @@ extension InvestimentFormViewController: InvestimentFormDisplayLogic {
     }
     
     func showError() {
-        showAlert(title: "Ops!", message: "Ocorreu um erro!")
+        Utils.showAlert(delegate: self, title: "Ops!", message: "Ocorreu um erro!")
     }
     
     func toggleLoading(_ bool: Bool) {

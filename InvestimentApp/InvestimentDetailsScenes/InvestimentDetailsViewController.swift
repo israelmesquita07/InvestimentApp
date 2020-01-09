@@ -9,7 +9,7 @@
 import UIKit
 
 protocol InvestimentDetailsViewControllerProtocol: AnyObject {
-    func showInvestiments(investiments: Investiment)
+    func showInvestiments()
 }
 
 class InvestimentDetailsViewController: UIViewController, InvestimentDetailsViewControllerProtocol {
@@ -19,9 +19,11 @@ class InvestimentDetailsViewController: UIViewController, InvestimentDetailsView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var simulateAgainButton: UIButton!
     
+    private let presenter = InvestimentDetailsPresenter()
     private let reuseIdentifier = "investimentCell"
     private let numberOfLines = 12
     private var investiment:Investiment!
+    typealias u = Utils
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +32,7 @@ class InvestimentDetailsViewController: UIViewController, InvestimentDetailsView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        totalMoneyLabel.text = investiment.grossAmount?.description
-        yieldMoneyLabel.text = investiment.grossAmountProfit?.description
+        showInvestiments()
     }
     
     //    init(investiments:Investiment) {
@@ -60,42 +61,9 @@ class InvestimentDetailsViewController: UIViewController, InvestimentDetailsView
 //        tableView.register(InvestimentDetailsTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
-    func showInvestiments(investiments: Investiment) {
-        
-    }
-    
-    private func fillTableLabels(_ index:Int) -> (String, String) {
-        
-        var labelsText:(String, String) = ("", "")
-        
-        switch index {
-        case 0:
-            labelsText = ("Valor aplicado inicialmente","\(investiment.investmentParameter?.investedAmount ?? 0.0)")
-        case 1:
-            labelsText = ("Valor bruto do investimento","\(investiment.grossAmount ?? 0.0)")
-        case 2:
-            labelsText = ("Valor do rendimento","\(investiment.grossAmountProfit ?? 0.0)")
-        case 3:
-            labelsText = ("IR sobre o investimento","\(investiment.taxesAmount ?? 0.0)(\(investiment.taxesRate ?? 0.0)%)")
-        case 4:
-            labelsText = ("Valor líquido do investimento","\(investiment.netAmount ?? 0.0)")
-        case 6:
-            labelsText = ("Data de resgate","\(investiment.investmentParameter?.maturityDate ?? "")")
-        case 7:
-            labelsText = ("Dias corridos","\(investiment.investmentParameter?.maturityTotalDays?.description ?? "")")
-        case 8:
-            labelsText = ("Rendimento mensal","\(investiment.monthlyGrossRateProfit ?? 0.0)")
-        case 9:
-            labelsText = ("Percentual do CDI do investimento","\(investiment.investmentParameter?.rate ?? 0.0)")
-        case 10:
-            labelsText = ("Rentabilidade anual","\(investiment.annualNetRateProfit ?? 0.0)")
-        case 11:
-            labelsText = ("Rentabilidade no período","\(investiment.annualGrossRateProfit ?? 0.0)")
-        default:
-            labelsText = ("","")
-        }
-        
-        return labelsText
+    func showInvestiments() {
+        totalMoneyLabel.text = presenter.brMoney(investiment.grossAmount ?? 0.0)
+        yieldMoneyLabel.text = presenter.brMoney(investiment.grossAmountProfit ?? 0.0)
     }
     
     @IBAction func backToSimulateAgain(_ sender: UIButton) {
@@ -119,5 +87,44 @@ extension InvestimentDetailsViewController: UITableViewDataSource {
         cell.setupCell(contextual: labelsText.0, value: labelsText.1)
         
         return cell
+    }
+}
+
+
+//MARK: - Data Formatter
+extension InvestimentDetailsViewController {
+    
+    private func fillTableLabels(_ index:Int) -> (String, String) {
+        
+        var labelsText:(String, String) = ("", "")
+        
+        switch index {
+        case 0:
+            labelsText = ("Valor aplicado inicialmente","\(presenter.brMoney(investiment.investmentParameter?.investedAmount ?? 0.0))")
+        case 1:
+            labelsText = ("Valor bruto do investimento","\(presenter.brMoney(investiment.grossAmount ?? 0.0))")
+        case 2:
+            labelsText = ("Valor do rendimento","\(presenter.brMoney(investiment.grossAmountProfit ?? 0.0))")
+        case 3:
+            labelsText = ("IR sobre o investimento","\(presenter.brMoney(investiment.taxesAmount ?? 0.0))(\(presenter.percentSymbol(investiment.taxesRate ?? 0.0)))")
+        case 4:
+            labelsText = ("Valor líquido do investimento","\(presenter.brMoney(investiment.netAmount ?? 0.0))")
+        case 6:
+            labelsText = ("Data de resgate","\(presenter.strDateFromAPI(from: investiment.investmentParameter?.maturityDate ?? ""))")
+        case 7:
+            labelsText = ("Dias corridos","\(investiment.investmentParameter?.maturityTotalDays?.description ?? "")")
+        case 8:
+            labelsText = ("Rendimento mensal","\(presenter.percentSymbol(investiment.monthlyGrossRateProfit ?? 0.0))")
+        case 9:
+            labelsText = ("Percentual do CDI do investimento","\(presenter.percentSymbol(investiment.investmentParameter?.rate ?? 0.0))")
+        case 10:
+            labelsText = ("Rentabilidade anual","\(presenter.percentSymbol(investiment.annualNetRateProfit ?? 0.0))")
+        case 11:
+            labelsText = ("Rentabilidade no período","\(presenter.percentSymbol(investiment.annualGrossRateProfit ?? 0.0))")
+        default:
+            labelsText = ("","")
+        }
+        
+        return labelsText
     }
 }
