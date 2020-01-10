@@ -9,5 +9,5 @@
 import Foundation
 
 class Endpoint {
-    static let baseUrl:String = "https://api-simulator-calc.easynvest.com.br/calculator/simulate"
+    static let baseUrl: String = "https://api-simulator-calc.easynvest.com.br/calculator/simulate"
 }

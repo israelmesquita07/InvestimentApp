@@ -13,7 +13,7 @@ protocol InvestimentDetailsViewControllerProtocol: AnyObject {
 }
 
 class InvestimentDetailsViewController: UIViewController, InvestimentDetailsViewControllerProtocol {
-    
+
     @IBOutlet weak var titleResultLabel: UILabel! {
         didSet {
             titleResultLabel.isAccessibilityElement = true
@@ -48,119 +48,118 @@ class InvestimentDetailsViewController: UIViewController, InvestimentDetailsView
             simulateAgainButton.accessibilityTraits = .button
         }
     }
-    
+
     private let presenter = InvestimentDetailsPresenter()
     private let reuseIdentifier = "investimentCell"
     private let numberOfLines = 12
-    private var investiment:Investiment!
-    
+    private var investiment: Investiment!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         updateFonts(label: simulateAgainButton.titleLabel ?? UILabel(), style: .headline)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showInvestiments()
     }
-    
-    //    init(investiments:Investiment) {
-    //        print("investiments: \(investiments)")
-    //        super.init(nibName: nil, bundle: nil)
-    ////        self.arrInvestiment = investiments
-    //    }
-    //
-    //    required init?(coder: NSCoder) {
-    //        super.init(coder: coder)
-    //    }
-    
-    class func createWith(injection:Investiment) -> InvestimentDetailsViewController {
-        
+
+    class func instantiate(withInjection injection: Investiment) -> InvestimentDetailsViewController? {
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "InvestimentDetailsViewController") as! InvestimentDetailsViewController
-        vc.investiment = injection
-        return vc
+        guard let vcInvestiment =
+            storyboard.instantiateViewController(withIdentifier: "InvestimentDetailsViewController")
+            as? InvestimentDetailsViewController else { return nil }
+        vcInvestiment.investiment = injection
+        return vcInvestiment
     }
-    
+
     private func setupTableView() {
         tableView.dataSource = self
         tableView.isUserInteractionEnabled = false
         tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: "InvestimentDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        //        tableView.register(InvestimentDetailsTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        let nib = UINib(nibName: "InvestimentDetailsTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
     }
-    
+
     func showInvestiments() {
         totalMoneyLabel.text = presenter.brMoney(investiment.grossAmount ?? 0.0)
         yieldMoneyLabel.text = presenter.brMoney(investiment.grossAmountProfit ?? 0.0)
     }
-    
-    private func updateFonts(label:UILabel, style:UIFont.TextStyle) {
+
+    private func updateFonts(label: UILabel, style: UIFont.TextStyle) {
         label.font = UIFont.preferredFont(forTextStyle: style)
     }
-    
+
     @IBAction func backToSimulateAgain(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
 }
 
-//MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource
 extension InvestimentDetailsViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfLines
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! InvestimentDetailsTableViewCell
-        
-        let labelsText = fillTableLabels(indexPath.row, cell)
-        cell.setupCell(contextual: labelsText.0, value: labelsText.1)
-        
-        return cell
+
+        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+            as? InvestimentDetailsTableViewCell {
+
+            let labelsText = fillTableLabels(indexPath.row, cell)
+            cell.setupCell(contextual: labelsText.0, value: labelsText.1)
+
+            return cell
+        }
+        return UITableViewCell()
     }
 }
 
-
-//MARK: - Data Formatter
+// MARK: - Data Formatter
 extension InvestimentDetailsViewController {
-    
-    private func fillTableLabels(_ index:Int,_ cell:UITableViewCell) -> (String, String) {
-        
-        var labelsText:(String, String) = ("", "")
-        
+
+    private func fillTableLabels(_ index: Int, _ cell: UITableViewCell) -> (String, String) {
+
+        var labelsText: (String, String) = ("", "")
+        guard let param = investiment.investmentParameter else { return ("", "") }
+
         switch index {
         case 0:
-            labelsText = (Constants.kInvestedAmount,"\(presenter.brMoney(investiment.investmentParameter?.investedAmount ?? 0.0))")
+            labelsText = (Constants.kInvestedAmount, "\(presenter.brMoney(param.investedAmount ?? 0.0))")
         case 1:
-            labelsText = (Constants.kGrossAmount ,"\(presenter.brMoney(investiment.grossAmount ?? 0.0))")
+            labelsText = (Constants.kGrossAmount, "\(presenter.brMoney(investiment.grossAmount ?? 0.0))")
         case 2:
-            labelsText = (Constants.kGrossAmountProfit,"\(presenter.brMoney(investiment.grossAmountProfit ?? 0.0))")
+            labelsText = (Constants.kGrossAmountProfit, "\(presenter.brMoney(investiment.grossAmountProfit ?? 0.0))")
         case 3:
-            labelsText = (Constants.kTaxesAmount,"\(presenter.brMoney(investiment.taxesAmount ?? 0.0))(\(presenter.percentSymbol(investiment.taxesRate ?? 0.0)))")
+            labelsText = (Constants.kTaxesAmount, "\(presenter.brMoney(investiment.taxesAmount ?? 0.0))"
+                + "(\(presenter.percentSymbol(investiment.taxesRate ?? 0.0)))")
         case 4:
-            labelsText = (Constants.kNetAmount,"\(presenter.brMoney(investiment.netAmount ?? 0.0))")
+            labelsText = (Constants.kNetAmount, "\(presenter.brMoney(investiment.netAmount ?? 0.0))")
         case 6:
-            labelsText = (Constants.kMaturityDate,"\(presenter.strDateFromAPI(from: investiment.investmentParameter?.maturityDate ?? ""))")
+            labelsText = (Constants.kMaturityDate, "\(presenter.strDateFromAPI(from: param.maturityDate ?? ""))")
         case 7:
-            labelsText = (Constants.kMaturityTotalDays,"\(investiment.investmentParameter?.maturityTotalDays?.description ?? "")")
+            labelsText = (Constants.kMaturityTotalDays, "\(param.maturityTotalDays?.description ?? "")")
         case 8:
-            labelsText = (Constants.kMonthlyGrossRateProfit,"\(presenter.percentSymbol(investiment.monthlyGrossRateProfit ?? 0.0))")
+            labelsText = (Constants.kMonthlyGrossRateProfit,
+                          "\(presenter.percentSymbol(investiment.monthlyGrossRateProfit ?? 0.0))")
         case 9:
-            labelsText = (Constants.kRate,"\(presenter.percentSymbol(investiment.investmentParameter?.rate ?? 0.0))")
+            labelsText = (Constants.kRate, "\(presenter.percentSymbol(param.rate ?? 0.0))")
         case 10:
-            labelsText = (Constants.kAnnualNetRateProfit,"\(presenter.percentSymbol(investiment.annualNetRateProfit ?? 0.0))")
+            labelsText = (Constants.kAnnualNetRateProfit,
+                          "\(presenter.percentSymbol(investiment.annualNetRateProfit ?? 0.0))")
         case 11:
-            labelsText = (Constants.kAnnualGrossRateProfit,"\(presenter.percentSymbol(investiment.annualGrossRateProfit ?? 0.0))")
+            labelsText = (Constants.kAnnualGrossRateProfit,
+                          "\(presenter.percentSymbol(investiment.annualGrossRateProfit ?? 0.0))")
         default:
-            labelsText = ("","")
+            labelsText = ("", "")
             cell.isAccessibilityElement = false
             cell.contentView.isAccessibilityElement = false
         }
-        
+
         return labelsText
     }
 }

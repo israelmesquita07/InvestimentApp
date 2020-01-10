@@ -9,17 +9,17 @@
 import UIKit
 
 class InvestimentDetailsTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var contextualLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setupCell(contextual:String, value:String){
+    func setupCell(contextual: String, value: String) {
         contextualLabel.text = contextual
         valueLabel.text = value
     }
-    
+
 }

@@ -10,17 +10,17 @@ import Foundation
 
 protocol InvestimentFormPresentationLogic: AnyObject {
     func showError()
-    func toggleLoading(_ bool:Bool)
+    func toggleLoading(_ bool: Bool)
 }
 
 class InvestimentFormPresenter: InvestimentFormPresentationLogic {
-    
+
     weak var investimentFormViewControllerDelegate: InvestimentFormDisplayLogic?
-    
+
     func showError() {
         self.investimentFormViewControllerDelegate?.showError()
     }
-    
+
     func toggleLoading(_ bool: Bool) {
         self.investimentFormViewControllerDelegate?.toggleLoading(bool)
     }

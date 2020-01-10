@@ -9,13 +9,15 @@
 import Foundation
 
 class InvestimentFormWorker {
-    
-    func getInvestiments(params: [String : Any], onComplete:@escaping(Investiment) -> Void, onError:@escaping(Error) -> Void) {
+
+    func getInvestiments(params: [String: Any],
+                         onComplete:@escaping(Investiment) -> Void,
+                         onError:@escaping(Error) -> Void) {
 
         API().getInvestiment(params: params, onComplete: { (investiments) in
             onComplete(investiments)
-        }) { (error) in
+        }, onError: { (error) in
             onError(error)
-        }
+        })
     }
 }

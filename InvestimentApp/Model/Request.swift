@@ -16,11 +16,11 @@ struct Request {
     var maturityDate: String
     var params: [String: Any] {
         return [
-                "investedAmount" : investedAmount,
-                "index" : index,
-                "rate" : rate,
-                "isTaxFree" : isTaxFree,
-                "maturityDate" : maturityDate
+                "investedAmount": investedAmount,
+                "index": index,
+                "rate": rate,
+                "isTaxFree": isTaxFree,
+                "maturityDate": maturityDate
                 ]
     }
 }
