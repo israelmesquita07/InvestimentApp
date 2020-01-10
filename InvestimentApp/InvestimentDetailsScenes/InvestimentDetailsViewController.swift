@@ -14,20 +14,50 @@ protocol InvestimentDetailsViewControllerProtocol: AnyObject {
 
 class InvestimentDetailsViewController: UIViewController, InvestimentDetailsViewControllerProtocol {
     
-    @IBOutlet weak var totalMoneyLabel: UILabel!
-    @IBOutlet weak var yieldMoneyLabel: UILabel!
+    @IBOutlet weak var titleResultLabel: UILabel! {
+        didSet {
+            titleResultLabel.isAccessibilityElement = true
+            titleResultLabel.accessibilityLabel = Constants.kInvestmentResultLabel
+            titleResultLabel.accessibilityTraits = .staticText
+        }
+    }
+    @IBOutlet weak var totalMoneyLabel: UILabel! {
+        didSet {
+            totalMoneyLabel.isAccessibilityElement = true
+            totalMoneyLabel.accessibilityTraits = .staticText
+        }
+    }
+    @IBOutlet weak var yieldMoneyIntroLabel: UILabel! {
+        didSet {
+            yieldMoneyIntroLabel.isAccessibilityElement = true
+            yieldMoneyIntroLabel.accessibilityLabel = Constants.kProfitabilityLabel
+            yieldMoneyIntroLabel.accessibilityTraits = .staticText
+        }
+    }
+    @IBOutlet weak var yieldMoneyLabel: UILabel! {
+        didSet {
+            yieldMoneyLabel.isAccessibilityElement = true
+            yieldMoneyLabel.accessibilityTraits = .staticText
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var simulateAgainButton: UIButton!
+    @IBOutlet weak var simulateAgainButton: UIButton! {
+        didSet {
+            simulateAgainButton.isAccessibilityElement = true
+            simulateAgainButton.accessibilityLabel = Constants.kSimulateAgainButton
+            simulateAgainButton.accessibilityTraits = .button
+        }
+    }
     
     private let presenter = InvestimentDetailsPresenter()
     private let reuseIdentifier = "investimentCell"
     private let numberOfLines = 12
     private var investiment:Investiment!
-    typealias u = Utils
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        updateFonts(label: simulateAgainButton.titleLabel ?? UILabel(), style: .headline)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,12 +88,16 @@ class InvestimentDetailsViewController: UIViewController, InvestimentDetailsView
         tableView.isUserInteractionEnabled = false
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "InvestimentDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-//        tableView.register(InvestimentDetailsTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        //        tableView.register(InvestimentDetailsTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
     func showInvestiments() {
         totalMoneyLabel.text = presenter.brMoney(investiment.grossAmount ?? 0.0)
         yieldMoneyLabel.text = presenter.brMoney(investiment.grossAmountProfit ?? 0.0)
+    }
+    
+    private func updateFonts(label:UILabel, style:UIFont.TextStyle) {
+        label.font = UIFont.preferredFont(forTextStyle: style)
     }
     
     @IBAction func backToSimulateAgain(_ sender: UIButton) {
@@ -83,7 +117,7 @@ extension InvestimentDetailsViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! InvestimentDetailsTableViewCell
         
-        let labelsText = fillTableLabels(indexPath.row)
+        let labelsText = fillTableLabels(indexPath.row, cell)
         cell.setupCell(contextual: labelsText.0, value: labelsText.1)
         
         return cell
@@ -94,35 +128,37 @@ extension InvestimentDetailsViewController: UITableViewDataSource {
 //MARK: - Data Formatter
 extension InvestimentDetailsViewController {
     
-    private func fillTableLabels(_ index:Int) -> (String, String) {
+    private func fillTableLabels(_ index:Int,_ cell:UITableViewCell) -> (String, String) {
         
         var labelsText:(String, String) = ("", "")
         
         switch index {
         case 0:
-            labelsText = ("Valor aplicado inicialmente","\(presenter.brMoney(investiment.investmentParameter?.investedAmount ?? 0.0))")
+            labelsText = (Constants.kInvestedAmount,"\(presenter.brMoney(investiment.investmentParameter?.investedAmount ?? 0.0))")
         case 1:
-            labelsText = ("Valor bruto do investimento","\(presenter.brMoney(investiment.grossAmount ?? 0.0))")
+            labelsText = (Constants.kGrossAmount ,"\(presenter.brMoney(investiment.grossAmount ?? 0.0))")
         case 2:
-            labelsText = ("Valor do rendimento","\(presenter.brMoney(investiment.grossAmountProfit ?? 0.0))")
+            labelsText = (Constants.kGrossAmountProfit,"\(presenter.brMoney(investiment.grossAmountProfit ?? 0.0))")
         case 3:
-            labelsText = ("IR sobre o investimento","\(presenter.brMoney(investiment.taxesAmount ?? 0.0))(\(presenter.percentSymbol(investiment.taxesRate ?? 0.0)))")
+            labelsText = (Constants.kTaxesAmount,"\(presenter.brMoney(investiment.taxesAmount ?? 0.0))(\(presenter.percentSymbol(investiment.taxesRate ?? 0.0)))")
         case 4:
-            labelsText = ("Valor líquido do investimento","\(presenter.brMoney(investiment.netAmount ?? 0.0))")
+            labelsText = (Constants.kNetAmount,"\(presenter.brMoney(investiment.netAmount ?? 0.0))")
         case 6:
-            labelsText = ("Data de resgate","\(presenter.strDateFromAPI(from: investiment.investmentParameter?.maturityDate ?? ""))")
+            labelsText = (Constants.kMaturityDate,"\(presenter.strDateFromAPI(from: investiment.investmentParameter?.maturityDate ?? ""))")
         case 7:
-            labelsText = ("Dias corridos","\(investiment.investmentParameter?.maturityTotalDays?.description ?? "")")
+            labelsText = (Constants.kMaturityTotalDays,"\(investiment.investmentParameter?.maturityTotalDays?.description ?? "")")
         case 8:
-            labelsText = ("Rendimento mensal","\(presenter.percentSymbol(investiment.monthlyGrossRateProfit ?? 0.0))")
+            labelsText = (Constants.kMonthlyGrossRateProfit,"\(presenter.percentSymbol(investiment.monthlyGrossRateProfit ?? 0.0))")
         case 9:
-            labelsText = ("Percentual do CDI do investimento","\(presenter.percentSymbol(investiment.investmentParameter?.rate ?? 0.0))")
+            labelsText = (Constants.kRate,"\(presenter.percentSymbol(investiment.investmentParameter?.rate ?? 0.0))")
         case 10:
-            labelsText = ("Rentabilidade anual","\(presenter.percentSymbol(investiment.annualNetRateProfit ?? 0.0))")
+            labelsText = (Constants.kAnnualNetRateProfit,"\(presenter.percentSymbol(investiment.annualNetRateProfit ?? 0.0))")
         case 11:
-            labelsText = ("Rentabilidade no período","\(presenter.percentSymbol(investiment.annualGrossRateProfit ?? 0.0))")
+            labelsText = (Constants.kAnnualGrossRateProfit,"\(presenter.percentSymbol(investiment.annualGrossRateProfit ?? 0.0))")
         default:
             labelsText = ("","")
+            cell.isAccessibilityElement = false
+            cell.contentView.isAccessibilityElement = false
         }
         
         return labelsText

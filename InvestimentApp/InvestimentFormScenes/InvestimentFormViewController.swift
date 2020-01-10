@@ -16,10 +16,55 @@ protocol InvestimentFormDisplayLogic: AnyObject {
 
 class InvestimentFormViewController: UIViewController {
     
-    @IBOutlet weak var moneyTextField: UITextField!
-    @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var percentTextField: UITextField!
-    @IBOutlet weak var simulateButton: UIButton!
+    @IBOutlet weak var moneyLabel: UILabel! {
+        didSet {
+            moneyLabel.isAccessibilityElement = true
+            moneyLabel.accessibilityLabel = Constants.kInvestedAmountLabel
+            moneyLabel.accessibilityTraits = .staticText
+        }
+    }
+    @IBOutlet weak var moneyTextField: UITextField! {
+        didSet {
+            moneyTextField.delegate = self
+            moneyTextField.isAccessibilityElement = true
+            moneyTextField.accessibilityLabel = Constants.kInvestedAmountTextField
+        }
+    }
+    @IBOutlet weak var dateLabel: UILabel! {
+        didSet {
+            dateLabel.isAccessibilityElement = true
+            dateLabel.accessibilityLabel = Constants.kMaturityDateLabel
+            dateLabel.accessibilityTraits = .staticText
+        }
+    }
+    @IBOutlet weak var dateTextField: UITextField! {
+        didSet {
+            dateTextField.delegate = self
+            dateTextField.isAccessibilityElement = true
+            dateTextField.accessibilityLabel = Constants.kMaturityDateTextField
+        }
+    }
+    @IBOutlet weak var percentLabel: UILabel! {
+        didSet {
+            percentLabel.isAccessibilityElement = true
+            percentLabel.accessibilityLabel = Constants.kInvestmentCDIRateLabel
+            percentLabel.accessibilityTraits = .staticText
+        }
+    }
+    @IBOutlet weak var percentTextField: UITextField! {
+        didSet {
+            percentTextField.delegate = self
+            percentTextField.isAccessibilityElement = true
+            percentTextField.accessibilityLabel = Constants.kInvestedAmountTextField
+        }
+    }
+    @IBOutlet weak var simulateButton: UIButton! {
+        didSet {
+            simulateButton.isAccessibilityElement = true
+            simulateButton.accessibilityLabel = Constants.kSimulateButton
+            simulateButton.accessibilityTraits = .button
+        }
+    }
     
     private var presenter = InvestimentFormPresenter()
     private var interactor = InvestimentFormInteractor()
@@ -52,9 +97,6 @@ class InvestimentFormViewController: UIViewController {
         simulateButton.isEnabled = false
         dateTextField.inputView = datePicker
         dateTextField.inputAccessoryView = toolbarDatePicker
-        dateTextField.delegate = self
-        moneyTextField.delegate = self
-        percentTextField.delegate = self
         presenter.investimentFormViewControllerDelegate = self
         router.viewControllerDelegate = self
         interactor.investimentFormPresenterDelegate = presenter

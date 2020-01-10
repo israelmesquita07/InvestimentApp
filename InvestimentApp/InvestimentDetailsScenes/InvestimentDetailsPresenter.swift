@@ -6,7 +6,7 @@
 //  Copyright © 2019 israel3D. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol InvestimentDetailsPresenterProtocol: AnyObject {
     func brMoney(_ double:Double) -> String
@@ -23,7 +23,8 @@ class InvestimentDetailsPresenter: InvestimentDetailsPresenterProtocol {
     }
     
     func percentSymbol(_ double: Double) -> String {
-        return Utils.withRatePercentSymbol(double)
+        let strWithDot = Utils.withRatePercentSymbol(double)
+        return strWithDot.replacingOccurrences(of: ".", with: ",").replacingOccurrences(of: ",0", with: "")
     }
     
     func strDateFromAPI(from string: String) -> String {
