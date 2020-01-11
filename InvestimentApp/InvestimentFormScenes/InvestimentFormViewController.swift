@@ -69,15 +69,15 @@ class InvestimentFormViewController: UIViewController {
         }
     }
 
-    private var presenter = InvestimentFormPresenter()
-    private var interactor = InvestimentFormInteractor()
-    private var router = InvestimentFormViewRouter()
+    private let interactor = InvestimentFormInteractor()
+    private let presenter = InvestimentFormPresenter()
+    private let router = InvestimentFormViewRouter()
 
     lazy var datePicker: UIDatePicker = {
         let datePicker =
             UIDatePicker(frame: CGRect(origin: .zero,
                                        size: CGSize(width: view.frame.width,
-                                                    height: view.frame.height/3.3)))
+                                       height: view.frame.height/3.3)))
         datePicker.datePickerMode = .date
         datePicker.minimumDate = Date()
         datePicker.locale = Locale(identifier: "pt-br")
@@ -97,6 +97,7 @@ class InvestimentFormViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         setup()
+        setupLayout()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -105,17 +106,19 @@ class InvestimentFormViewController: UIViewController {
     }
 
     private func setup() {
-        simulateButton.isEnabled = false
-        dateTextField.inputView = datePicker
-        dateTextField.inputAccessoryView = toolbarDatePicker
         presenter.investimentFormViewControllerDelegate = self
         router.viewControllerDelegate = self
         interactor.investimentFormPresenterDelegate = presenter
         interactor.investimentFormRouterDelegate = router
     }
 
-    func getParams() -> [String: Any] {
+    private func setupLayout() {
+        simulateButton.isEnabled = false
+        dateTextField.inputView = datePicker
+        dateTextField.inputAccessoryView = toolbarDatePicker
+    }
 
+    private func getParams() -> [String: Any] {
         guard let money = Double(moneyTextField.text!),
             let date = dateTextField.text,
             let percent = Int(percentTextField.text!) else {
@@ -136,8 +139,7 @@ class InvestimentFormViewController: UIViewController {
     }
 
     private func dateFormatter(datePicker: UIDatePicker) {
-        //mandar pro presenter
-        let formattedDate = Utils.dateToString(from: datePicker.date)//dateFormatter.string(from: datePicker.date)
+        let formattedDate = Utils.dateToString(from: datePicker.date)
         dateTextField.text = formattedDate
     }
 
