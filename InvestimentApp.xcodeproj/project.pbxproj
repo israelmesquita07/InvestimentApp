@@ -18,6 +18,8 @@
 		584860EC239C3BB20051F12E /* InvestimentAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584860EB239C3BB20051F12E /* InvestimentAppTests.swift */; };
 		5874BFFD23C6EA6200805595 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874BFFC23C6EA6200805595 /* Constants.swift */; };
 		5874BFFE23C6EA6200805595 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874BFFC23C6EA6200805595 /* Constants.swift */; };
+		5887922123C97EC3005ADC37 /* Investiment.json in Resources */ = {isa = PBXBuildFile; fileRef = 5887922023C97EC3005ADC37 /* Investiment.json */; };
+		5887922223C985AB005ADC37 /* Investiment.json in Resources */ = {isa = PBXBuildFile; fileRef = 5887922023C97EC3005ADC37 /* Investiment.json */; };
 		58ADB9D423A018D600E444D4 /* InvestimentFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9D323A018D600E444D4 /* InvestimentFormPresenter.swift */; };
 		58ADB9D523A018D600E444D4 /* InvestimentFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9D323A018D600E444D4 /* InvestimentFormPresenter.swift */; };
 		58ADB9D723A018E300E444D4 /* InvestimentFormInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADB9D623A018E300E444D4 /* InvestimentFormInteractor.swift */; };
@@ -73,6 +75,7 @@
 		584860EB239C3BB20051F12E /* InvestimentAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentAppTests.swift; sourceTree = "<group>"; };
 		584860ED239C3BB20051F12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5874BFFC23C6EA6200805595 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5887922023C97EC3005ADC37 /* Investiment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Investiment.json; sourceTree = "<group>"; };
 		58ADB9D323A018D600E444D4 /* InvestimentFormPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormPresenter.swift; sourceTree = "<group>"; };
 		58ADB9D623A018E300E444D4 /* InvestimentFormInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormInteractor.swift; sourceTree = "<group>"; };
 		58ADB9D923A018EF00E444D4 /* InvestimentFormWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormWorker.swift; sourceTree = "<group>"; };
@@ -237,6 +240,7 @@
 			children = (
 				58E09FD1239F52D300581755 /* Endpoint.swift */,
 				58E09FD4239F533F00581755 /* API.swift */,
+				5887922023C97EC3005ADC37 /* Investiment.json */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -339,6 +343,7 @@
 				584860E1239C3BB20051F12E /* LaunchScreen.storyboard in Resources */,
 				584860DE239C3BB20051F12E /* Assets.xcassets in Resources */,
 				584860DC239C3BAF0051F12E /* Main.storyboard in Resources */,
+				5887922223C985AB005ADC37 /* Investiment.json in Resources */,
 				58E09FCA239F4AA800581755 /* InvestimentDetailsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5887922123C97EC3005ADC37 /* Investiment.json in Resources */,
 				58E09FCB239F4AA800581755 /* InvestimentDetailsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

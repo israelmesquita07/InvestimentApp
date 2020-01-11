@@ -11,23 +11,57 @@ import XCTest
 
 class InvestimentAppTests: XCTestCase {
 
+    var sut: InvestimentFormViewController?
+    var investiment: Investiment?
+
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let sboard = UIStoryboard(name: "Main", bundle: nil)
+        sut = sboard.instantiateViewController(withIdentifier: "InvestimentFormViewController")
+                as? InvestimentFormViewController
+        investiment = getAPIInvestimentData()
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testToggleViewLoading() {
+        guard sut != nil else { return }
+        sut!.loadView()
+        sut!.toggleLoading(false)
+        XCTAssertFalse(sut!.viewLoading.isHidden)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testMaturityTotalDays() {
+        guard investiment != nil else { return }
+        XCTAssertEqual(investiment?.investmentParameter?.maturityTotalDays, 1981)
     }
+
+    func testTaxesRate() {
+        guard investiment != nil else { return }
+        XCTAssertEqual(investiment?.taxesRate, 15.0)
+    }
+
+    func testTaxFreeReturnsDefaultFalse() {
+        guard investiment != nil else { return }
+        XCTAssertEqual(investiment?.investmentParameter?.isTaxFree, false)
+    }
+
+    private func getAPIInvestimentData() -> Investiment? {
+
+        if let path = Bundle.main.path(forResource: "Investiment", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let result = try? decoder.decode(Investiment.self, from: data) {
+                    return result
+                }
+            } catch let error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+        return nil
+    }
+
 }
