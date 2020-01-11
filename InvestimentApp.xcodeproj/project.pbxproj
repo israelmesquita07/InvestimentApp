@@ -10,6 +10,8 @@
 		43C31C4AB91A4D68848CEBD2 /* Pods_InvestimentAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D76E182A164A76342DC7AD /* Pods_InvestimentAppTests.framework */; };
 		58187BC323C436E8003B3FE5 /* InvestimentFormViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58187BC223C436E8003B3FE5 /* InvestimentFormViewRouter.swift */; };
 		58187BC423C436E8003B3FE5 /* InvestimentFormViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58187BC223C436E8003B3FE5 /* InvestimentFormViewRouter.swift */; };
+		581C306523C995A400D6C695 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C306423C995A400D6C695 /* UITextField+Extension.swift */; };
+		581C306723C995DC00D6C695 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C306623C995DC00D6C695 /* Double+Extension.swift */; };
 		584860D5239C3BAF0051F12E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584860D4239C3BAF0051F12E /* AppDelegate.swift */; };
 		584860D7239C3BAF0051F12E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584860D6239C3BAF0051F12E /* SceneDelegate.swift */; };
 		584860DC239C3BAF0051F12E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584860DA239C3BAF0051F12E /* Main.storyboard */; };
@@ -64,6 +66,8 @@
 		308CBB82D229806CC36A5A9E /* Pods-InvestimentAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestimentAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InvestimentAppTests/Pods-InvestimentAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		33F015C324C6724246A14384 /* Pods-InvestimentAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestimentAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InvestimentAppTests/Pods-InvestimentAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		58187BC223C436E8003B3FE5 /* InvestimentFormViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentFormViewRouter.swift; sourceTree = "<group>"; };
+		581C306423C995A400D6C695 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		581C306623C995DC00D6C695 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		584860D1239C3BAF0051F12E /* InvestimentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestimentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		584860D4239C3BAF0051F12E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		584860D6239C3BAF0051F12E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +127,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		581C306823C9963800D6C695 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				581C306423C995A400D6C695 /* UITextField+Extension.swift */,
+				581C306623C995DC00D6C695 /* Double+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		584860C8239C3BAF0051F12E = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +186,7 @@
 			children = (
 				58ADB9DC23A03A4300E444D4 /* Utils.swift */,
 				5874BFFC23C6EA6200805595 /* Constants.swift */,
+				581C306823C9963800D6C695 /* Extensions */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -430,6 +444,7 @@
 			files = (
 				58E09FD2239F52D300581755 /* Endpoint.swift in Sources */,
 				58E09FC8239F4AA800581755 /* InvestimentDetailsTableViewCell.swift in Sources */,
+				581C306723C995DC00D6C695 /* Double+Extension.swift in Sources */,
 				58ADB9E023A1958F00E444D4 /* InvestimentDetailsPresenter.swift in Sources */,
 				584860D5239C3BAF0051F12E /* AppDelegate.swift in Sources */,
 				58ADB9D423A018D600E444D4 /* InvestimentFormPresenter.swift in Sources */,
@@ -444,6 +459,7 @@
 				584860D7239C3BAF0051F12E /* SceneDelegate.swift in Sources */,
 				58ADB9DA23A018EF00E444D4 /* InvestimentFormWorker.swift in Sources */,
 				58ADB9D723A018E300E444D4 /* InvestimentFormInteractor.swift in Sources */,
+				581C306523C995A400D6C695 /* UITextField+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,7 +686,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.israel3D.InvestimentAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InvestimentApp.app/InvestimentApp";
 			};
@@ -693,7 +709,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.israel3D.InvestimentAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InvestimentApp.app/InvestimentApp";
 			};

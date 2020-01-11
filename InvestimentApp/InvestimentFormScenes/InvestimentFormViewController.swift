@@ -31,6 +31,7 @@ class InvestimentFormViewController: UIViewController {
             moneyTextField.delegate = self
             moneyTextField.isAccessibilityElement = true
             moneyTextField.accessibilityLabel = Constants.kInvestedAmountTextField
+            moneyTextField.addTarget(self, action: #selector(self.editingMoney(_:)), for: .editingChanged)
         }
     }
     @IBOutlet weak var dateLabel: UILabel! {
@@ -59,6 +60,8 @@ class InvestimentFormViewController: UIViewController {
             percentTextField.delegate = self
             percentTextField.isAccessibilityElement = true
             percentTextField.accessibilityLabel = Constants.kInvestedAmountTextField
+            percentTextField.addTarget(self, action: #selector(self.editingPercent(_:)), for: .editingDidEnd)
+            percentTextField.addTarget(self, action: #selector(self.editingNoPercent(_:)), for: .editingDidBegin)
         }
     }
     @IBOutlet weak var simulateButton: UIButton! {
@@ -119,9 +122,11 @@ class InvestimentFormViewController: UIViewController {
     }
 
     private func getParams() -> [String: Any] {
-        guard let money = Double(moneyTextField.text!),
+
+        percentTextField.toNoPercent()
+        guard let money = moneyTextField.removeFormatAmount(),
             let date = dateTextField.text,
-            let percent = Int(percentTextField.text!) else {
+            let percent = Int(percentTextField.text ?? "") else {
             showError()
             return [String: Any]()
         }
@@ -161,7 +166,10 @@ extension InvestimentFormViewController: InvestimentFormDisplayLogic {
     }
 
     func showError() {
-        Utils.showAlert(delegate: self, title: "Ops!", message: "Ocorreu um erro!")
+        DispatchQueue.main.async {
+            self.toggleLoading(false)
+            Utils.showAlert(delegate: self, title: "Ops!", message: "Ocorreu um erro!")
+        }
     }
 
     func toggleLoading(_ bool: Bool) {
@@ -187,5 +195,17 @@ extension InvestimentFormViewController: UITextFieldDelegate {
             simulateButton.backgroundColor = #colorLiteral(red: 0, green: 0.7850220799, blue: 0.7006854415, alpha: 1)
             simulateButton.isEnabled = true
         }
+    }
+
+    @objc func editingMoney(_ textField: UITextField) {
+        textField.toCurrency()
+    }
+
+    @objc func editingPercent(_ textField: UITextField) {
+        textField.toPercent()
+    }
+
+    @objc func editingNoPercent(_ textField: UITextField) {
+        textField.toNoPercent()
     }
 }

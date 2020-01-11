@@ -18,17 +18,18 @@ class InvestimentFormInteractor: InvestimentFormBusinessLogic {
     weak var investimentFormRouterDelegate: InvestimentFormRoutingLogic?
 
     func getInvestiments(params: [String: Any]) {
-        investimentFormPresenterDelegate?.toggleLoading(true)
-        let worker = InvestimentFormWorker()
+        if !params.isEmpty {
+            investimentFormPresenterDelegate?.toggleLoading(true)
+            let worker = InvestimentFormWorker()
 
-        worker.getInvestiments(params: params, onComplete: { [weak self] (investiment) in
-            guard let self = self else { return }
-            self.investimentFormRouterDelegate?.routeToInvestiments(investiment: investiment)
-            self.investimentFormPresenterDelegate?.toggleLoading(true)
-            }, onError: { [weak self] (error) in
-                print(error)
+            worker.getInvestiments(params: params, onComplete: { [weak self] (investiment) in
                 guard let self = self else { return }
-                self.investimentFormPresenterDelegate?.showError()
-        })
+                self.investimentFormRouterDelegate?.routeToInvestiments(investiment: investiment)
+                self.investimentFormPresenterDelegate?.toggleLoading(true)
+                }, onError: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.investimentFormPresenterDelegate?.showError()
+            })
+        }
     }
 }

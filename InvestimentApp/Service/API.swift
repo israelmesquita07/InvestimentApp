@@ -11,28 +11,31 @@ import Foundation
 protocol APIService {
     func getInvestiment(params: [String: Any],
                         onComplete:@escaping(Investiment) -> Void,
-                        onError:@escaping(Error) -> Void)
+                        onError:@escaping(Error?) -> Void)
 }
 
 class API: APIService {
 
     func getInvestiment(params: [String: Any],
                         onComplete: @escaping (Investiment) -> Void,
-                        onError: @escaping (Error) -> Void) {
+                        onError: @escaping (Error?) -> Void) {
 
         let request = createRequest(with: params)
         let dataTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
 
             if error == nil {
                 guard let data = data else { return }
-                if let dictJson = self.parseDataToDictionary(data) {
-                    if let model = try? JSONDecoder().decode(Investiment.self,
-                                                             from: JSONSerialization.data(withJSONObject: dictJson,
-                                                                                          options: .prettyPrinted)) {
-                        onComplete(model)
-                    }
+                guard let dictJson = self.parseDataToDictionary(data) else {
+                    onError(nil)
+                    return
                 }
-
+                guard let model = try?
+                    JSONDecoder().decode(Investiment.self,
+                    from: JSONSerialization.data(withJSONObject: dictJson, options: .prettyPrinted)) else {
+                    onError(nil)
+                    return
+                }
+                onComplete(model)
             } else {
                 onError(error!)
             }
