@@ -16,6 +16,9 @@ protocol InvestimentFormDisplayLogic: UIViewController {
 
 class InvestimentFormViewController: UIViewController {
 
+    @IBOutlet weak var viewLoading: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     @IBOutlet weak var moneyLabel: UILabel! {
         didSet {
             moneyLabel.isAccessibilityElement = true
@@ -96,6 +99,11 @@ class InvestimentFormViewController: UIViewController {
         setup()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewLoading.isHidden = true
+    }
+
     private func setup() {
         simulateButton.isEnabled = false
         dateTextField.inputView = datePicker
@@ -138,6 +146,7 @@ class InvestimentFormViewController: UIViewController {
     }
 
     @IBAction func simulateInvestiment(_ sender: UIButton) {
+        toggleLoading(true)
         getInvestiments()
     }
 }
@@ -154,10 +163,16 @@ extension InvestimentFormViewController: InvestimentFormDisplayLogic {
     }
 
     func toggleLoading(_ bool: Bool) {
-        if bool {
-            //start loading
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            if bool {
+                self.viewLoading.isHidden = false
+                self.activityIndicator.startAnimating()
+                return
+            }
+            self.viewLoading.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
-        //stop loading
     }
 }
 

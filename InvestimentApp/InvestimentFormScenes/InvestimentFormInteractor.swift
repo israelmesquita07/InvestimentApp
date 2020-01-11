@@ -24,6 +24,7 @@ class InvestimentFormInteractor: InvestimentFormBusinessLogic {
         worker.getInvestiments(params: params, onComplete: { [weak self] (investiment) in
             guard let self = self else { return }
             self.investimentFormRouterDelegate?.routeToInvestiments(investiment: investiment)
+            self.investimentFormPresenterDelegate?.toggleLoading(true)
             }, onError: { [weak self] (error) in
                 print(error)
                 guard let self = self else { return }

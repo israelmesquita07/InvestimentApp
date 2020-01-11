@@ -18,6 +18,7 @@ class InvestimentFormPresenter: InvestimentFormPresentationLogic {
     weak var investimentFormViewControllerDelegate: InvestimentFormDisplayLogic?
 
     func showError() {
+        self.investimentFormViewControllerDelegate?.toggleLoading(false)
         self.investimentFormViewControllerDelegate?.showError()
     }
 

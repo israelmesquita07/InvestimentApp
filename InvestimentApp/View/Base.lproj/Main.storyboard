@@ -157,13 +157,35 @@
                                     <action selector="simulateInvestiment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0N3-hi-E7B"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahe-vd-qYe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="onE-nJ-XU2">
+                                        <rect key="frame" x="162.5" y="308.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="7XC-fS-6Kz"/>
+                                            <constraint firstAttribute="height" constant="50" id="8bs-cM-J4L"/>
+                                        </constraints>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="0.71735873287671237" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="onE-nJ-XU2" firstAttribute="centerY" secondItem="ahe-vd-qYe" secondAttribute="centerY" id="2Ty-Vi-84H"/>
+                                    <constraint firstItem="onE-nJ-XU2" firstAttribute="centerX" secondItem="ahe-vd-qYe" secondAttribute="centerX" id="apz-FD-A8z"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IOl-x8-hEI" secondAttribute="trailing" constant="14" id="1g0-hX-9Fp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x35-W4-IG1" secondAttribute="trailing" constant="14" id="4g7-vo-cVy"/>
+                            <constraint firstItem="ahe-vd-qYe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IeC-ja-Qjh"/>
+                            <constraint firstItem="ahe-vd-qYe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="JGz-uR-ZqX"/>
+                            <constraint firstAttribute="bottom" secondItem="ahe-vd-qYe" secondAttribute="bottom" id="MrN-4d-06m"/>
                             <constraint firstItem="x35-W4-IG1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="OUD-nX-J5L"/>
                             <constraint firstItem="x35-W4-IG1" firstAttribute="top" secondItem="IOl-x8-hEI" secondAttribute="bottom" constant="40" id="OVf-3v-9zM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ahe-vd-qYe" secondAttribute="trailing" id="dwK-Tb-fDw"/>
                             <constraint firstItem="IOl-x8-hEI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="j01-Su-YfH"/>
                             <constraint firstItem="IOl-x8-hEI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="mzt-Dp-lTG"/>
                         </constraints>
@@ -171,6 +193,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="7he-Dy-2Oo"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="onE-nJ-XU2" id="fmH-yn-lyP"/>
                         <outlet property="dateLabel" destination="RJT-f2-DIg" id="w4C-HC-fBL"/>
                         <outlet property="dateTextField" destination="Dc0-i9-2Ro" id="dVx-6g-3o8"/>
                         <outlet property="moneyLabel" destination="YID-Vz-yuZ" id="9PQ-uS-Q4X"/>
@@ -178,6 +201,7 @@
                         <outlet property="percentLabel" destination="3ok-r9-Pci" id="JKP-Wy-hgj"/>
                         <outlet property="percentTextField" destination="lJ8-Pr-BDk" id="N3n-Ps-JgB"/>
                         <outlet property="simulateButton" destination="x35-W4-IG1" id="XkJ-D5-4Oy"/>
+                        <outlet property="viewLoading" destination="ahe-vd-qYe" id="oC9-7e-GN4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
