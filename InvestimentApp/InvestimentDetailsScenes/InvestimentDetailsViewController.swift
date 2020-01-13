@@ -18,26 +18,22 @@ class InvestimentDetailsViewController: UIViewController, InvestimentDetailsView
         didSet {
             titleResultLabel.isAccessibilityElement = true
             titleResultLabel.accessibilityLabel = Constants.kInvestmentResultLabel
-            titleResultLabel.accessibilityTraits = .zero
         }
     }
     @IBOutlet weak var totalMoneyLabel: UILabel! {
         didSet {
             totalMoneyLabel.isAccessibilityElement = true
-            totalMoneyLabel.accessibilityTraits = .zero
         }
     }
     @IBOutlet weak var yieldMoneyIntroLabel: UILabel! {
         didSet {
             yieldMoneyIntroLabel.isAccessibilityElement = true
             yieldMoneyIntroLabel.accessibilityLabel = Constants.kProfitabilityLabel
-            yieldMoneyIntroLabel.accessibilityTraits = .zero
         }
     }
     @IBOutlet weak var yieldMoneyLabel: UILabel! {
         didSet {
             yieldMoneyLabel.isAccessibilityElement = true
-            yieldMoneyLabel.accessibilityTraits = .zero
         }
     }
     @IBOutlet weak var tableView: UITableView!
@@ -45,7 +41,6 @@ class InvestimentDetailsViewController: UIViewController, InvestimentDetailsView
         didSet {
             simulateAgainButton.isAccessibilityElement = true
             simulateAgainButton.accessibilityLabel = Constants.kSimulateAgainButton
-            simulateAgainButton.accessibilityTraits = .zero
         }
     }
 

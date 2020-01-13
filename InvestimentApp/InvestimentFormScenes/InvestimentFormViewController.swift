@@ -23,7 +23,6 @@ class InvestimentFormViewController: UIViewController {
         didSet {
             moneyLabel.isAccessibilityElement = true
             moneyLabel.accessibilityLabel = Constants.kInvestedAmountLabel
-            moneyLabel.accessibilityTraits = .zero
         }
     }
     @IBOutlet weak var moneyTextField: UITextField! {
@@ -38,7 +37,6 @@ class InvestimentFormViewController: UIViewController {
         didSet {
             dateLabel.isAccessibilityElement = true
             dateLabel.accessibilityLabel = Constants.kMaturityDateLabel
-            dateLabel.accessibilityTraits = .zero
         }
     }
     @IBOutlet weak var dateTextField: UITextField! {
@@ -52,7 +50,6 @@ class InvestimentFormViewController: UIViewController {
         didSet {
             percentLabel.isAccessibilityElement = true
             percentLabel.accessibilityLabel = Constants.kInvestmentCDIRateLabel
-            percentLabel.accessibilityTraits = .zero
         }
     }
     @IBOutlet weak var percentTextField: UITextField! {
@@ -68,7 +65,6 @@ class InvestimentFormViewController: UIViewController {
         didSet {
             simulateButton.isAccessibilityElement = true
             simulateButton.accessibilityLabel = Constants.kSimulateButton
-            simulateButton.accessibilityTraits = .zero
         }
     }
 
